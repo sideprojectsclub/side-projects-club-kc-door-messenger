@@ -1,12 +1,12 @@
 var express = require("express"),
  app = express(),
- twilio = require('twilio'),
- twilioResponse = new twilio.TwimlResponse();
+ twilio = require('twilio');
 
 
 var smsDoorPath = "/sms/door";
 app.post("/sms/door", function (req, res, next) {
-    var message = twilioResponse.say('Welcome to Side Projects Club KC. Someone will be down shortly to help you in.').toString();
+    var twilioResponse = new twilio.TwimlResponse()
+    var message = twilioResponse.sms('Welcome to Side Projects Club KC. Someone will be down shortly to help you in.').toString();
     
     res.set('Content-Type', 'text/xml');
     res.status(200);
